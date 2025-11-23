@@ -12,7 +12,7 @@ declare global {
 
 const baseURL = import.meta.env.MODE === "development" 
     ? "/api" 
-    : "https://spotify-chat-jqzp.onrender.com/api";
+    : "https://drs-music-backend.onrender.com/api";
 
 const CLERK_JWT_STORAGE_KEY = '__clerk_client_jwt';
 
