@@ -36,7 +36,7 @@ interface BroadcastNotificationPayload {
 	createdAt: string;
 }
 
-const baseUrl = import.meta.env.MODE === "development" ? "http://localhost:5000" : "/";
+const baseUrl = import.meta.env.MODE === "development" ? "http://localhost:5000" : "https://drs-music-backend.onrender.com/";
 
 const socket = io(baseUrl, {
 	autoConnect: false,
