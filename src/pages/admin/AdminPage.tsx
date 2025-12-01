@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Album, Music } from "lucide-react";
+import { Album, Music, CheckSquare } from "lucide-react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ import ForbiddenPage from "./component/ForbiddenMessage";
 import Header from "./component/Header";
 import SongsTabContent from "./component/SongsTabContent";
 import BroadcastNotificationCard from "./component/BroadcastNotificationCard";
+import { TodoList } from "./component/TodoList";
 
 
 const AdminPage = () => {
@@ -39,7 +40,7 @@ const AdminPage = () => {
 				<DashboardStats />
 
 				<Tabs defaultValue='songs' className='space-y-6'>
-					<TabsList className='p-1 bg-zinc-800/50 flex flex-wrap gap-2'>
+					<TabsList className='p-1 bg-zinc-800/50 flex flex-wrap gap-2 mb-12'>
 						<TabsTrigger value='songs' className='data-[state=active]:bg-zinc-700'>
 							<Music className='mr-2 size-4' />
 							Songs
@@ -47,6 +48,10 @@ const AdminPage = () => {
 						<TabsTrigger value='albums' className='data-[state=active]:bg-zinc-700'>
 							<Album className='mr-2 size-4' />
 							Albums
+						</TabsTrigger>
+						<TabsTrigger value='todos' className='data-[state=active]:bg-zinc-700'>
+							<CheckSquare className='mr-2 size-4' />
+							Todos
 						</TabsTrigger>
 						<Button
 							type='button'
@@ -65,6 +70,9 @@ const AdminPage = () => {
 					</TabsContent>
 					<TabsContent value='albums'>
 						<AlbumsTabContent />
+					</TabsContent>
+					<TabsContent value='todos'>
+						<TodoList />
 					</TabsContent>
 				</Tabs>
 			</div>

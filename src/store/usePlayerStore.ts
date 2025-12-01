@@ -24,6 +24,8 @@ interface PlayerState {
   isShuffle: boolean;
   isLooping: boolean;
   shuffleQueue: Song[];
+  audioQuality: 'low' | 'normal' | 'high';
+  crossfade: boolean;
   playSong: (song: Song) => void;
   pauseSong: () => void;
   playAlbum: (songs: Song[], startIndex?: number) => void;
@@ -39,6 +41,9 @@ interface PlayerState {
   clearQueue: () => void;
   toggleShuffle: () => void;
   toggleLoop: () => void;
+  setAudioQuality: (quality: 'low' | 'normal' | 'high') => void;
+  getAudioUrl: (song: Song) => string;
+  toggleCrossfade: () => void;
 }
 
 const usePlayerStore = create<PlayerState>()(
@@ -55,6 +60,8 @@ const usePlayerStore = create<PlayerState>()(
       isShuffle: false,
       isLooping: true,
       shuffleQueue: [],
+      audioQuality: 'high',
+      crossfade: false,
 
       playSong: (song) =>
         set((state) => {
@@ -370,6 +377,36 @@ const usePlayerStore = create<PlayerState>()(
       toggleLoop: () =>
         set((state) => ({
           isLooping: !state.isLooping,
+        })),
+
+      setAudioQuality: (quality: 'low' | 'normal' | 'high') =>
+        set(() => ({
+          audioQuality: quality,
+        })),
+
+      getAudioUrl: (song: Song) => {
+        const state = usePlayerStore.getState();
+        
+        // Return different quality URLs based on the setting
+        if (typeof song.audioUrl === 'object' && song.audioUrl !== null) {
+          switch (state.audioQuality) {
+            case 'low':
+              return song.audioUrl.low || song.audioUrl.normal || song.audioUrl.high || '';
+            case 'normal':
+              return song.audioUrl.normal || song.audioUrl.high || song.audioUrl.low || '';
+            case 'high':
+            default:
+              return song.audioUrl.high || song.audioUrl.normal || song.audioUrl.low || '';
+          }
+        } else {
+          // Fallback to string audioUrl
+          return song.audioUrl as string;
+        }
+      },
+
+      toggleCrossfade: () =>
+        set((state) => ({
+          crossfade: !state.crossfade,
         })),
     }),
     {

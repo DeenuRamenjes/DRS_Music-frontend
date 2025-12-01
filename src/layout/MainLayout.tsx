@@ -10,6 +10,8 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import usePlayerStore from '@/store/usePlayerStore';
 import { useChatStore } from '@/stores/useChatStore';
+import useDisplayStore from '@/store/useDisplayStore';
+import '@/styles/display.css';
 
 const MainLayout = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -17,6 +19,7 @@ const MainLayout = () => {
     const [isFriendsOpen, setIsFriendsOpen] = useState(false);
     const { currentSong, isPlaying, playSong, pauseSong, playNext, playPrevious } = usePlayerStore();
     const { unreadCounts } = useChatStore();
+    const { theme, accentColor, compactMode, layout, sidebarCollapsed } = useDisplayStore();
     const totalUnread = useMemo(() => Object.values(unreadCounts).reduce((sum, count) => sum + count, 0), [unreadCounts]);
 
     const navigate = useNavigate();
@@ -58,6 +61,16 @@ const MainLayout = () => {
         const alreadyNavigated = lastNavigatedSongId.current === currentSong._id;
 
         if (alreadyNavigated && location.pathname !== songPath) {
+            return;
+        }
+
+        if (location.pathname === '/home' || location.pathname === '/') {
+            return;
+        }
+        if (location.pathname === '/profile' || location.pathname === '/') {
+            return;
+        }
+        if (location.pathname === '/settings' || location.pathname === '/') {
             return;
         }
 
@@ -122,8 +135,35 @@ const MainLayout = () => {
         setIsFriendsOpen(true);
     };
 
+    useEffect(() => {
+        const root = document.documentElement;
+        
+        // Apply theme
+        if (theme === 'light') {
+            root.classList.add('light');
+            root.classList.remove('dark');
+        } else {
+            root.classList.add('dark');
+            root.classList.remove('light');
+        }
+        
+        // Apply accent color
+        root.setAttribute('data-accent', accentColor);
+        
+        // Apply compact mode
+        if (compactMode) {
+            root.classList.add('compact-mode');
+        } else {
+            root.classList.remove('compact-mode');
+        }
+        
+        // Apply layout
+        root.setAttribute('data-layout', layout);
+        
+    }, [theme, accentColor, compactMode, layout]);
+
     return (
-        <div className='h-dvh bg-black text-white flex flex-col'>
+        <div className={`h-dvh ${theme === 'light' ? 'bg-white text-black' : 'bg-black text-white'} flex flex-col ${compactMode ? 'compact-mode' : ''} layout-${layout}`}>
             {isMobile && isSidebarOpen && !showCompactSongLayout && (
                 <div className="fixed inset-0 z-50">
                     <div 
@@ -169,7 +209,7 @@ const MainLayout = () => {
                         </div>
 
                     </div>
-                    <Link to={"/"} className='flex space-x-2'>
+                    <Link to={"/home"} className='flex space-x-2'>
                         <h1 className='font-semibold text-xl'>DRS Music</h1>
                         <img src="/DRS.png" alt="Logo" className='size-8' />
                     </Link>
@@ -206,22 +246,47 @@ const MainLayout = () => {
                     <Outlet />
                 </div>
             ) : (
-                <ResizablePanelGroup direction='horizontal' className='flex-1 flex h-full overflow-hidden p-2'>
-                    {!isMobile && (
+                <ResizablePanelGroup direction='horizontal' className={`flex-1 flex h-full overflow-hidden ${compactMode ? 'p-1' : 'p-2'}`}>
+                    {!isMobile && !sidebarCollapsed && (
                         <>
-                            <ResizablePanel defaultSize={20} minSize={10} maxSize={30}>
+                            <ResizablePanel 
+                                defaultSize={
+                                    layout === 'compact' ? 15 : 
+                                    layout === 'expanded' ? 25 : 
+                                    20
+                                } 
+                                minSize={layout === 'compact' ? 8 : 10} 
+                                maxSize={layout === 'compact' ? 25 : 30}
+                            >
                                 <LeftSidebar onOpenFriends={handleOpenFriends}/>
                             </ResizablePanel>
-                            <ResizableHandle className='w-2 bg-black rounded-lg transition-colors'/>
+                            <ResizableHandle className={`w-2 ${theme === 'light' ? 'bg-gray-300' : 'bg-black'} rounded-lg transition-colors`}/>
                         </>
                     )}
-                    <ResizablePanel defaultSize={isMobile ? 100 : 60}>
+                    <ResizablePanel 
+                        defaultSize={
+                            isMobile ? 100 : 
+                            sidebarCollapsed ? 85 :
+                            layout === 'compact' ? 70 : 
+                            layout === 'expanded' ? 50 : 
+                            60
+                        }
+                    >
                         <Outlet/>
                     </ResizablePanel>
                     {!isMobile && (
                         <>
-                            <ResizableHandle className='w-2 bg-black rounded-lg transition-colors'/>
-                            <ResizablePanel defaultSize={20} minSize={0} maxSize={25} collapsedSize={0}>
+                            <ResizableHandle className={`w-2 ${theme === 'light' ? 'bg-gray-300' : 'bg-black'} rounded-lg transition-colors`}/>
+                            <ResizablePanel 
+                                defaultSize={
+                                    layout === 'compact' ? 15 : 
+                                    layout === 'expanded' ? 25 : 
+                                    20
+                                } 
+                                minSize={0} 
+                                maxSize={layout === 'compact' ? 20 : 25} 
+                                collapsedSize={0}
+                            >
                                 <FriendsActivity/>
                             </ResizablePanel>
                         </>

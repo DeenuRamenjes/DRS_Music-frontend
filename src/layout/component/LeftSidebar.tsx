@@ -1,7 +1,7 @@
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { SignedIn } from "@clerk/clerk-react"
-import { HomeIcon, Library, MessageCircle, Music, Users } from "lucide-react"
+import { HomeIcon, Library, MessageCircle, Music, Users, User, Settings } from "lucide-react"
 
 import { Link } from "react-router-dom"
 import {ScrollArea} from '@/components/ui/scroll-area'
@@ -30,7 +30,7 @@ const LeftSidebar = ({ onNavigate, onOpenFriends }: LeftSidebarProps) => {
             <div className="rounded-lg bg-zinc-900 p-2 sm:p-4">
                 <div className="space-y-2">
 
-                    <Link to={'/'} className={cn(buttonVariants({
+                    <Link to={'/home'} className={cn(buttonVariants({
                         variant: 'ghost',
                         className: 'w-full justify-start text-white hover:bg-zinc-800'
                     }))} onClick={onNavigate}>
@@ -64,6 +64,22 @@ const LeftSidebar = ({ onNavigate, onOpenFriends }: LeftSidebarProps) => {
                                     {unreadTotal > 9 ? '9+' : unreadTotal}
                                 </span>
                             )}
+                        </Link>
+
+                        <Link to={'/profile'} className={cn(buttonVariants({
+                            variant: 'ghost',
+                            className: 'w-full justify-start text-white hover:bg-zinc-800'
+                        }))} onClick={onNavigate}>
+                            <User className="mr-2 size-5"/>
+                            <span>Profile</span>
+                        </Link>
+
+                        <Link to={'/settings'} className={cn(buttonVariants({
+                            variant: 'ghost',
+                            className: 'w-full justify-start text-white hover:bg-zinc-800'
+                        }))} onClick={onNavigate}>
+                            <Settings className="mr-2 size-5"/>
+                            <span>Settings</span>
                         </Link>
                     </SignedIn>
 

@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Play, Pause, Clock, CalendarDays, Music2, Shuffle, Repeat, SkipBack, SkipForward, ListMusic, ChevronUp, ChevronDown, Heart, Volume2, VolumeX, MoreVertical, Share, Download } from "lucide-react";
-import { axiosInstance } from "@/lib/axios";
-import { Song } from "@/types";
 import usePlayerStore from "@/store/usePlayerStore";
+import useDownloadStore from "@/store/useDownloadStore";
 import { cn } from "@/lib/utils";
 import { useMusicStore } from "@/stores/useMusicStore";
+import { Song } from "@/types";
+import { axiosInstance } from "@/lib/axios";
 
 const formatDurationDisplay = (duration?: number | string) => {
   if (typeof duration === "number") {
@@ -73,6 +74,8 @@ const SongDetailPage = () => {
     setVolume,
     toggleMute,
   } = usePlayerStore();
+
+  const { getDownloadUrl } = useDownloadStore();
 
   const {
     fetchLikedSongs,
@@ -169,7 +172,7 @@ const SongDetailPage = () => {
   }, [likedSongsInitialized, fetchLikedSongs]);
 
   useEffect(() => {
-    setSong((prev) => {
+    setSong((prev: Song | null) => {
       if (!prev) return prev;
       const liked = likedSongIds.has(prev._id);
       if (prev.isLiked === liked) return prev;
@@ -192,7 +195,9 @@ const SongDetailPage = () => {
     if (!song) return;
     try {
       setIsDownloading(true);
-      const response = await fetch(song.audioUrl, { mode: 'cors' });
+      // Use the download quality setting to get the appropriate URL
+      const downloadUrl = getDownloadUrl(song.audioUrl);
+      const response = await fetch(downloadUrl, { mode: 'cors' });
       if (!response.ok) {
         throw new Error('Failed to download song');
       }
@@ -202,7 +207,11 @@ const SongDetailPage = () => {
       const link = document.createElement('a');
       link.href = url;
       const extension = blob.type.includes('audio/') ? blob.type.split('/')[1] : 'mp3';
-      link.download = `${song.title ?? 'song'}.${extension}`;
+      
+      // Add quality info to filename
+      const qualitySuffix = downloadUrl !== song.audioUrl ? `_${getDownloadUrl(song.audioUrl).includes('low') ? 'low' : getDownloadUrl(song.audioUrl).includes('normal') ? 'normal' : 'high'}` : '';
+      link.download = `${song.title ?? 'song'}${qualitySuffix}.${extension}`;
+      
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -381,7 +390,7 @@ const SongDetailPage = () => {
       } else {
         await unlikeSongAction(song._id);
       }
-      setSong((prev) => (prev ? { ...prev, isLiked: targetLiked } : prev));
+      setSong((prev: Song | null) => (prev ? { ...prev, isLiked: targetLiked } : prev));
     } catch (error) {
       console.error('Error toggling like', error);
     }

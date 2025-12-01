@@ -196,7 +196,7 @@ const AudioPlayer = () => {
     };
   }, [currentSong, playNext, playPrevious, playSong, pauseSong]);
 
-  if (!currentSong) return null;
+  if (!currentSong || !currentSong.audioUrl || typeof currentSong.audioUrl !== 'string') return null;
 
   return (
     <>
@@ -204,12 +204,15 @@ const AudioPlayer = () => {
         ref={audioRef}
         src={currentSong.audioUrl}
         preload="auto"
+        onError={(e) => {
+          console.error('Audio element error:', e);
+          setError('Failed to load audio file');
+        }}
       />
       {isLoading && (
         <div></div>
         // <div className="fixed bottom-20 left-0 right-0 text-white p-2 text-center">
         //   Loading audio...
-        // </div>
       )}
       {error && (
         <div className="fixed bottom-20 left-0 right-0 bg-red-900 text-white p-2 text-center">

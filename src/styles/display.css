@@ -1,0 +1,1339 @@
+/* Display Settings Styles */
+
+/* Theme Styles */
+:root[data-theme="light"],
+.light {
+  --bg-primary: 255, 255, 255;
+  --bg-secondary: 249, 250, 251;
+  --bg-tertiary: 243, 244, 246;
+  --text-primary: 17, 24, 39;
+  --text-secondary: 75, 85, 99;
+  --text-tertiary: 107, 114, 128;
+  --border-primary: 229, 231, 235;
+  --border-secondary: 209, 213, 219;
+}
+
+:root[data-theme="dark"],
+.dark {
+  --bg-primary: 0, 0, 0;
+  --bg-secondary: 17, 24, 39;
+  --bg-tertiary: 31, 41, 55;
+  --text-primary: 255, 255, 255;
+  --text-secondary: 156, 163, 175;
+  --text-tertiary: 107, 114, 128;
+  --border-primary: 55, 65, 81;
+  --border-secondary: 75, 85, 99;
+}
+
+/* Accent Color Styles */
+:root[data-accent="emerald"] {
+  --accent-primary: 16, 185, 129;
+  --accent-hover: 5, 150, 105;
+  --accent-light: 209, 250, 229;
+  --accent-dark: 6, 95, 70;
+}
+
+:root[data-accent="blue"] {
+  --accent-primary: 59, 130, 246;
+  --accent-hover: 37, 99, 235;
+  --accent-light: 219, 234, 254;
+  --accent-dark: 29, 78, 216;
+}
+
+:root[data-accent="purple"] {
+  --accent-primary: 147, 51, 234;
+  --accent-hover: 126, 34, 206;
+  --accent-light: 237, 233, 254;
+  --accent-dark: 109, 40, 217;
+}
+
+:root[data-accent="pink"] {
+  --accent-primary: 236, 72, 153;
+  --accent-hover: 219, 39, 119;
+  --accent-light: 252, 231, 243;
+  --accent-dark: 190, 18, 60;
+}
+
+:root[data-accent="orange"] {
+  --accent-primary: 251, 146, 60;
+  --accent-hover: 234, 88, 12;
+  --accent-light: 255, 237, 213;
+  --accent-dark: 194, 65, 12;
+}
+
+/* Compact Mode Styles */
+.compact-mode {
+  --spacing-xs: 0.125rem;
+  --spacing-sm: 0.25rem;
+  --spacing-md: 0.5rem;
+  --spacing-lg: 0.75rem;
+  --spacing-xl: 1rem;
+  --font-size-sm: 0.75rem;
+  --font-size-md: 0.875rem;
+  --font-size-lg: 1rem;
+}
+
+.compact-mode .space-y-4 > * + * {
+  margin-top: var(--spacing-sm) !important;
+}
+
+.compact-mode .space-y-6 > * + * {
+  margin-top: var(--spacing-md) !important;
+}
+
+.compact-mode .p-6 {
+  padding: var(--spacing-lg) !important;
+}
+
+.compact-mode .p-4 {
+  padding: var(--spacing-md) !important;
+}
+
+.compact-mode .p-2 {
+  padding: var(--spacing-xs) !important;
+}
+
+.compact-mode .py-3 {
+  padding-top: var(--spacing-sm) !important;
+  padding-bottom: var(--spacing-sm) !important;
+}
+
+.compact-mode .mb-6 {
+  margin-bottom: var(--spacing-lg) !important;
+}
+
+.compact-mode .mb-4 {
+  margin-bottom: var(--spacing-md) !important;
+}
+
+.compact-mode .mb-2 {
+  margin-bottom: var(--spacing-sm) !important;
+}
+
+.compact-mode .text-xl {
+  font-size: var(--font-size-lg) !important;
+}
+
+.compact-mode .text-sm {
+  font-size: var(--font-size-sm) !important;
+}
+
+/* Layout Styles */
+.layout-compact .resizable-panel {
+  max-width: min-content;
+}
+
+.layout-expanded .resizable-panel {
+  min-width: 300px;
+}
+
+.layout-expanded .resizable-panel:first-child {
+  min-width: 280px;
+  max-width: 400px;
+}
+
+.layout-expanded .resizable-panel:last-child {
+  min-width: 280px;
+  max-width: 400px;
+}
+
+.layout-compact .resizable-panel:first-child {
+  max-width: 200px;
+}
+
+.layout-compact .resizable-panel:last-child {
+  max-width: 200px;
+}
+
+/* Dynamic Accent Color Implementation */
+/* Override all Tailwind accent color classes with CSS variables */
+
+/* Emerald colors (default) - will be overridden by other accent colors */
+.bg-emerald-50 { background-color: rgb(236, 253, 245); }
+.bg-emerald-100 { background-color: rgb(209, 250, 229); }
+.bg-emerald-200 { background-color: rgb(167, 243, 208); }
+.bg-emerald-300 { background-color: rgb(110, 231, 183); }
+.bg-emerald-400 { background-color: rgb(52, 211, 153); }
+.bg-emerald-500 { background-color: rgb(16, 185, 129); }
+.bg-emerald-600 { background-color: rgb(5, 150, 105); }
+.bg-emerald-700 { background-color: rgb(4, 120, 87); }
+.bg-emerald-800 { background-color: rgb(6, 95, 70); }
+.bg-emerald-900 { background-color: rgb(6, 78, 59); }
+
+.text-emerald-50 { color: rgb(236, 253, 245); }
+.text-emerald-100 { color: rgb(209, 250, 229); }
+.text-emerald-200 { color: rgb(167, 243, 208); }
+.text-emerald-300 { color: rgb(110, 231, 183); }
+.text-emerald-400 { color: rgb(52, 211, 153); }
+.text-emerald-500 { color: rgb(16, 185, 129); }
+.text-emerald-600 { color: rgb(5, 150, 105); }
+.text-emerald-700 { color: rgb(4, 120, 87); }
+.text-emerald-800 { color: rgb(6, 95, 70); }
+.text-emerald-900 { color: rgb(6, 78, 59); }
+
+.border-emerald-50 { border-color: rgb(236, 253, 245); }
+.border-emerald-100 { border-color: rgb(209, 250, 229); }
+.border-emerald-200 { border-color: rgb(167, 243, 208); }
+.border-emerald-300 { border-color: rgb(110, 231, 183); }
+.border-emerald-400 { border-color: rgb(52, 211, 153); }
+.border-emerald-500 { border-color: rgb(16, 185, 129); }
+.border-emerald-600 { border-color: rgb(5, 150, 105); }
+.border-emerald-700 { border-color: rgb(4, 120, 87); }
+.border-emerald-800 { border-color: rgb(6, 95, 70); }
+.border-emerald-900 { border-color: rgb(6, 78, 59); }
+
+/* Ring colors for focus states */
+.ring-emerald-500 { --tw-ring-color: rgb(16, 185, 129); }
+.ring-emerald-600 { --tw-ring-color: rgb(5, 150, 105); }
+.ring-emerald-400 { --tw-ring-color: rgb(52, 211, 153); }
+
+/* Shadow colors for box shadows */
+.shadow-emerald-500 { box-shadow: 0 0 0 3px rgb(16, 185, 129); }
+.shadow-emerald-600 { box-shadow: 0 0 0 3px rgb(5, 150, 105); }
+
+/* Dynamic accent color overrides for ALL elements */
+[data-accent="blue"] .bg-emerald-50,
+[data-accent="blue"] .bg-emerald-100,
+[data-accent="blue"] .bg-emerald-200,
+[data-accent="blue"] .bg-emerald-300,
+[data-accent="blue"] .bg-emerald-400,
+[data-accent="blue"] .bg-emerald-500,
+[data-accent="blue"] .bg-emerald-600,
+[data-accent="blue"] .bg-emerald-700,
+[data-accent="blue"] .bg-emerald-800,
+[data-accent="blue"] .bg-emerald-900 {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="blue"] .text-emerald-50,
+[data-accent="blue"] .text-emerald-100,
+[data-accent="blue"] .text-emerald-200,
+[data-accent="blue"] .text-emerald-300,
+[data-accent="blue"] .text-emerald-400,
+[data-accent="blue"] .text-emerald-500,
+[data-accent="blue"] .text-emerald-600,
+[data-accent="blue"] .text-emerald-700,
+[data-accent="blue"] .text-emerald-800,
+[data-accent="blue"] .text-emerald-900 {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="blue"] .border-emerald-50,
+[data-accent="blue"] .border-emerald-100,
+[data-accent="blue"] .border-emerald-200,
+[data-accent="blue"] .border-emerald-300,
+[data-accent="blue"] .border-emerald-400,
+[data-accent="blue"] .border-emerald-500,
+[data-accent="blue"] .border-emerald-600,
+[data-accent="blue"] .border-emerald-700,
+[data-accent="blue"] .border-emerald-800,
+[data-accent="blue"] .border-emerald-900 {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="blue"] .ring-emerald-500,
+[data-accent="blue"] .ring-emerald-600,
+[data-accent="blue"] .ring-emerald-400 {
+  --tw-ring-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="blue"] .shadow-emerald-500,
+[data-accent="blue"] .shadow-emerald-600 {
+  box-shadow: 0 0 0 3px rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="purple"] .bg-emerald-50,
+[data-accent="purple"] .bg-emerald-100,
+[data-accent="purple"] .bg-emerald-200,
+[data-accent="purple"] .bg-emerald-300,
+[data-accent="purple"] .bg-emerald-400,
+[data-accent="purple"] .bg-emerald-500,
+[data-accent="purple"] .bg-emerald-600,
+[data-accent="purple"] .bg-emerald-700,
+[data-accent="purple"] .bg-emerald-800,
+[data-accent="purple"] .bg-emerald-900 {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="purple"] .text-emerald-50,
+[data-accent="purple"] .text-emerald-100,
+[data-accent="purple"] .text-emerald-200,
+[data-accent="purple"] .text-emerald-300,
+[data-accent="purple"] .text-emerald-400,
+[data-accent="purple"] .text-emerald-500,
+[data-accent="purple"] .text-emerald-600,
+[data-accent="purple"] .text-emerald-700,
+[data-accent="purple"] .text-emerald-800,
+[data-accent="purple"] .text-emerald-900 {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="purple"] .border-emerald-50,
+[data-accent="purple"] .border-emerald-100,
+[data-accent="purple"] .border-emerald-200,
+[data-accent="purple"] .border-emerald-300,
+[data-accent="purple"] .border-emerald-400,
+[data-accent="purple"] .border-emerald-500,
+[data-accent="purple"] .border-emerald-600,
+[data-accent="purple"] .border-emerald-700,
+[data-accent="purple"] .border-emerald-800,
+[data-accent="purple"] .border-emerald-900 {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="purple"] .ring-emerald-500,
+[data-accent="purple"] .ring-emerald-600,
+[data-accent="purple"] .ring-emerald-400 {
+  --tw-ring-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="purple"] .shadow-emerald-500,
+[data-accent="purple"] .shadow-emerald-600 {
+  box-shadow: 0 0 0 3px rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="pink"] .bg-emerald-50,
+[data-accent="pink"] .bg-emerald-100,
+[data-accent="pink"] .bg-emerald-200,
+[data-accent="pink"] .bg-emerald-300,
+[data-accent="pink"] .bg-emerald-400,
+[data-accent="pink"] .bg-emerald-500,
+[data-accent="pink"] .bg-emerald-600,
+[data-accent="pink"] .bg-emerald-700,
+[data-accent="pink"] .bg-emerald-800,
+[data-accent="pink"] .bg-emerald-900 {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="pink"] .text-emerald-50,
+[data-accent="pink"] .text-emerald-100,
+[data-accent="pink"] .text-emerald-200,
+[data-accent="pink"] .text-emerald-300,
+[data-accent="pink"] .text-emerald-400,
+[data-accent="pink"] .text-emerald-500,
+[data-accent="pink"] .text-emerald-600,
+[data-accent="pink"] .text-emerald-700,
+[data-accent="pink"] .text-emerald-800,
+[data-accent="pink"] .text-emerald-900 {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="pink"] .border-emerald-50,
+[data-accent="pink"] .border-emerald-100,
+[data-accent="pink"] .border-emerald-200,
+[data-accent="pink"] .border-emerald-300,
+[data-accent="pink"] .border-emerald-400,
+[data-accent="pink"] .border-emerald-500,
+[data-accent="pink"] .border-emerald-600,
+[data-accent="pink"] .border-emerald-700,
+[data-accent="pink"] .border-emerald-800,
+[data-accent="pink"] .border-emerald-900 {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="pink"] .ring-emerald-500,
+[data-accent="pink"] .ring-emerald-600,
+[data-accent="pink"] .ring-emerald-400 {
+  --tw-ring-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="pink"] .shadow-emerald-500,
+[data-accent="pink"] .shadow-emerald-600 {
+  box-shadow: 0 0 0 3px rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="orange"] .bg-emerald-50,
+[data-accent="orange"] .bg-emerald-100,
+[data-accent="orange"] .bg-emerald-200,
+[data-accent="orange"] .bg-emerald-300,
+[data-accent="orange"] .bg-emerald-400,
+[data-accent="orange"] .bg-emerald-500,
+[data-accent="orange"] .bg-emerald-600,
+[data-accent="orange"] .bg-emerald-700,
+[data-accent="orange"] .bg-emerald-800,
+[data-accent="orange"] .bg-emerald-900 {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="orange"] .text-emerald-50,
+[data-accent="orange"] .text-emerald-100,
+[data-accent="orange"] .text-emerald-200,
+[data-accent="orange"] .text-emerald-300,
+[data-accent="orange"] .text-emerald-400,
+[data-accent="orange"] .text-emerald-500,
+[data-accent="orange"] .text-emerald-600,
+[data-accent="orange"] .text-emerald-700,
+[data-accent="orange"] .text-emerald-800,
+[data-accent="orange"] .text-emerald-900 {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="orange"] .border-emerald-50,
+[data-accent="orange"] .border-emerald-100,
+[data-accent="orange"] .border-emerald-200,
+[data-accent="orange"] .border-emerald-300,
+[data-accent="orange"] .border-emerald-400,
+[data-accent="orange"] .border-emerald-500,
+[data-accent="orange"] .border-emerald-600,
+[data-accent="orange"] .border-emerald-700,
+[data-accent="orange"] .border-emerald-800,
+[data-accent="orange"] .border-emerald-900 {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="orange"] .ring-emerald-500,
+[data-accent="orange"] .ring-emerald-600,
+[data-accent="orange"] .ring-emerald-400 {
+  --tw-ring-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="orange"] .shadow-emerald-500,
+[data-accent="orange"] .shadow-emerald-600 {
+  box-shadow: 0 0 0 3px rgb(var(--accent-primary)) !important;
+}
+
+/* Additional comprehensive coverage for all UI elements */
+
+/* Progress bars and range inputs */
+[type="range"]::-webkit-slider-thumb {
+  background: rgb(var(--accent-primary)) !important;
+}
+
+[type="range"]::-moz-range-thumb {
+  background: rgb(var(--accent-primary)) !important;
+}
+
+[type="range"]::-webkit-slider-thumb:hover {
+  background: rgb(var(--accent-hover)) !important;
+}
+
+[type="range"]::-moz-range-thumb:hover {
+  background: rgb(var(--accent-hover)) !important;
+}
+
+/* Progress bar fill */
+progress::-webkit-progress-value {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+progress::-moz-progress-bar {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+/* Checkbox and radio buttons */
+input[type="checkbox"]:checked {
+  background-color: rgb(var(--accent-primary)) !important;
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+input[type="radio"]:checked {
+  background-color: rgb(var(--accent-primary)) !important;
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+/* Select dropdowns */
+select:focus {
+  border-color: rgb(var(--accent-primary)) !important;
+  box-shadow: 0 0 0 1px rgb(var(--accent-primary)) !important;
+}
+
+/* Input fields */
+input:focus,
+textarea:focus {
+  border-color: rgb(var(--accent-primary)) !important;
+  box-shadow: 0 0 0 1px rgb(var(--accent-primary)) !important;
+}
+
+/* Scrollbar thumb (webkit) */
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--accent-primary)) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent-hover)) !important;
+}
+
+/* Play buttons and media controls */
+.play-button,
+.play-btn,
+[data-play-button],
+button[aria-label*="play"],
+button[aria-label*="Play"] {
+  background-color: rgb(var(--accent-primary)) !important;
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+.play-button:hover,
+.play-btn:hover,
+[data-play-button]:hover,
+button[aria-label*="play"]:hover,
+button[aria-label*="Play"]:hover {
+  background-color: rgb(var(--accent-hover)) !important;
+}
+
+/* Song cards and featured sections */
+.song-card,
+.featured-section,
+.album-card,
+.artist-card {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+.song-card:hover,
+.featured-section:hover,
+.album-card:hover,
+.artist-card:hover {
+  border-color: rgb(var(--accent-hover)) !important;
+  box-shadow: 0 0 0 1px rgb(var(--accent-primary)) !important;
+}
+
+/* Active states and selection */
+.active,
+.selected,
+.current,
+.playing {
+  background-color: rgb(var(--accent-primary)) !important;
+  color: white !important;
+}
+
+.active:hover,
+.selected:hover,
+.current:hover,
+.playing:hover {
+  background-color: rgb(var(--accent-hover)) !important;
+}
+
+/* Footer and player controls */
+.footer-controls,
+.player-controls,
+.audio-controls {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+/* Volume slider and progress slider */
+.volume-slider,
+.progress-slider,
+.seek-bar {
+  background: rgb(var(--accent-primary)) !important;
+}
+
+/* Like and favorite buttons */
+.like-button,
+.favorite-btn,
+button[aria-label*="like"],
+button[aria-label*="favorite"] {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+.like-button:hover,
+.favorite-btn:hover,
+button[aria-label*="like"]:hover,
+button[aria-label*="favorite"]:hover {
+  color: rgb(var(--accent-hover)) !important;
+}
+
+.like-button.liked,
+.favorite-btn.favorited,
+button[aria-label*="like"].liked,
+button[aria-label*="favorite"].favorited {
+  background-color: rgb(var(--accent-primary)) !important;
+  color: white !important;
+}
+
+/* Download and share buttons */
+.download-button,
+.share-button,
+.action-button {
+  background-color: rgb(var(--accent-primary)) !important;
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+.download-button:hover,
+.share-button:hover,
+.action-button:hover {
+  background-color: rgb(var(--accent-hover)) !important;
+}
+
+/* Navigation and menu items */
+.nav-item,
+.menu-item,
+.sidebar-item {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+.nav-item:hover,
+.menu-item:hover,
+.sidebar-item:hover {
+  background-color: rgb(var(--accent-primary)) !important;
+  color: white !important;
+}
+
+.nav-item.active,
+.menu-item.active,
+.sidebar-item.active {
+  background-color: rgb(var(--accent-primary)) !important;
+  color: white !important;
+}
+
+/* Notification badges and indicators */
+.notification-badge,
+.indicator-dot,
+.status-dot {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+/* Loading spinners and animations */
+.spinner,
+.loading,
+.loader {
+  border-color: rgb(var(--accent-primary)) !important;
+  border-top-color: transparent !important;
+}
+
+/* Tabs and tab navigation */
+.tab-active,
+.tab-selected,
+[data-tab="active"] {
+  border-color: rgb(var(--accent-primary)) !important;
+  color: rgb(var(--accent-primary)) !important;
+}
+
+.tab-active:hover,
+.tab-selected:hover,
+[data-tab="active"]:hover {
+  background-color: rgb(var(--accent-light)) !important;
+}
+
+/* Modal and dialog borders */
+.modal,
+.dialog,
+.popup {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+/* Links and hyperlinks */
+a:not([class*="text-"]) {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+a:not([class*="text-"]):hover {
+  color: rgb(var(--accent-hover)) !important;
+}
+
+/* Range input styling - robust approach */
+/* First, ensure default emerald color works */
+input[type="range"]::-webkit-slider-thumb {
+  background-color: rgb(16, 185, 129) !important;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background-color: rgb(16, 185, 129) !important;
+}
+
+/* Then override with specific accent colors */
+[data-accent="blue"] input[type="range"]::-webkit-slider-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="blue"] input[type="range"]::-moz-range-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] input[type="range"]::-webkit-slider-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="purple"] input[type="range"]::-moz-range-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] input[type="range"]::-webkit-slider-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="pink"] input[type="range"]::-moz-range-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] input[type="range"]::-webkit-slider-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+[data-accent="orange"] input[type="range"]::-moz-range-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+/* Also target any range inputs within specific containers */
+[data-accent="blue"] .progress-slider::-webkit-slider-thumb,
+[data-accent="blue"] .volume-slider::-webkit-slider-thumb,
+[data-accent="blue"] .seek-slider::-webkit-slider-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] .progress-slider::-webkit-slider-thumb,
+[data-accent="purple"] .volume-slider::-webkit-slider-thumb,
+[data-accent="purple"] .seek-slider::-webkit-slider-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] .progress-slider::-webkit-slider-thumb,
+[data-accent="pink"] .volume-slider::-webkit-slider-thumb,
+[data-accent="pink"] .seek-slider::-webkit-slider-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] .progress-slider::-webkit-slider-thumb,
+[data-accent="orange"] .volume-slider::-webkit-slider-thumb,
+[data-accent="orange"] .seek-slider::-webkit-slider-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+/* Firefox versions */
+[data-accent="blue"] .progress-slider::-moz-range-thumb,
+[data-accent="blue"] .volume-slider::-moz-range-thumb,
+[data-accent="blue"] .seek-slider::-moz-range-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] .progress-slider::-moz-range-thumb,
+[data-accent="purple"] .volume-slider::-moz-range-thumb,
+[data-accent="purple"] .seek-slider::-moz-range-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] .progress-slider::-moz-range-thumb,
+[data-accent="pink"] .volume-slider::-moz-range-thumb,
+[data-accent="pink"] .seek-slider::-moz-range-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] .progress-slider::-moz-range-thumb,
+[data-accent="orange"] .volume-slider::-moz-range-thumb,
+[data-accent="orange"] .seek-slider::-moz-range-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+/* Target song detail page specific elements */
+[data-accent="blue"] .song-detail input[type="range"]::-webkit-slider-thumb,
+[data-accent="blue"] .song-page input[type="range"]::-webkit-slider-thumb,
+[data-accent="blue"] .player input[type="range"]::-webkit-slider-thumb,
+[data-accent="blue"] .audio-player input[type="range"]::-webkit-slider-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] .song-detail input[type="range"]::-webkit-slider-thumb,
+[data-accent="purple"] .song-page input[type="range"]::-webkit-slider-thumb,
+[data-accent="purple"] .player input[type="range"]::-webkit-slider-thumb,
+[data-accent="purple"] .audio-player input[type="range"]::-webkit-slider-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] .song-detail input[type="range"]::-webkit-slider-thumb,
+[data-accent="pink"] .song-page input[type="range"]::-webkit-slider-thumb,
+[data-accent="pink"] .player input[type="range"]::-webkit-slider-thumb,
+[data-accent="pink"] .audio-player input[type="range"]::-webkit-slider-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] .song-detail input[type="range"]::-webkit-slider-thumb,
+[data-accent="orange"] .song-page input[type="range"]::-webkit-slider-thumb,
+[data-accent="orange"] .player input[type="range"]::-webkit-slider-thumb,
+[data-accent="orange"] .audio-player input[type="range"]::-webkit-slider-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+/* Firefox versions for song detail page */
+[data-accent="blue"] .song-detail input[type="range"]::-moz-range-thumb,
+[data-accent="blue"] .song-page input[type="range"]::-moz-range-thumb,
+[data-accent="blue"] .player input[type="range"]::-moz-range-thumb,
+[data-accent="blue"] .audio-player input[type="range"]::-moz-range-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] .song-detail input[type="range"]::-moz-range-thumb,
+[data-accent="purple"] .song-page input[type="range"]::-moz-range-thumb,
+[data-accent="purple"] .player input[type="range"]::-moz-range-thumb,
+[data-accent="purple"] .audio-player input[type="range"]::-moz-range-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] .song-detail input[type="range"]::-moz-range-thumb,
+[data-accent="pink"] .song-page input[type="range"]::-moz-range-thumb,
+[data-accent="pink"] .player input[type="range"]::-moz-range-thumb,
+[data-accent="pink"] .audio-player input[type="range"]::-moz-range-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] .song-detail input[type="range"]::-moz-range-thumb,
+[data-accent="orange"] .song-page input[type="range"]::-moz-range-thumb,
+[data-accent="orange"] .player input[type="range"]::-moz-range-thumb,
+[data-accent="orange"] .audio-player input[type="range"]::-moz-range-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+/* Target accent-emerald-400 class specifically */
+[data-accent="blue"] input[type="range"].accent-emerald-400::-webkit-slider-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="blue"] input[type="range"].accent-emerald-400::-moz-range-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] input[type="range"].accent-emerald-400::-webkit-slider-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="purple"] input[type="range"].accent-emerald-400::-moz-range-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] input[type="range"].accent-emerald-400::-webkit-slider-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="pink"] input[type="range"].accent-emerald-400::-moz-range-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] input[type="range"].accent-emerald-400::-webkit-slider-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+[data-accent="orange"] input[type="range"].accent-emerald-400::-moz-range-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+/* Also override the accent-color property */
+[data-accent="blue"] input[type="range"].accent-emerald-400 {
+  accent-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] input[type="range"].accent-emerald-400 {
+  accent-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] input[type="range"].accent-emerald-400 {
+  accent-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] input[type="range"].accent-emerald-400 {
+  accent-color: rgb(251, 146, 60) !important;
+}
+
+/* Target all accent-emerald-* classes */
+[data-accent="blue"] input[type="range"][class*="accent-emerald-"]::-webkit-slider-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="blue"] input[type="range"][class*="accent-emerald-"]::-moz-range-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="blue"] input[type="range"][class*="accent-emerald-"] {
+  accent-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] input[type="range"][class*="accent-emerald-"]::-webkit-slider-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="purple"] input[type="range"][class*="accent-emerald-"]::-moz-range-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="purple"] input[type="range"][class*="accent-emerald-"] {
+  accent-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] input[type="range"][class*="accent-emerald-"]::-webkit-slider-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="pink"] input[type="range"][class*="accent-emerald-"]::-moz-range-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="pink"] input[type="range"][class*="accent-emerald-"] {
+  accent-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] input[type="range"][class*="accent-emerald-"]::-webkit-slider-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+[data-accent="orange"] input[type="range"][class*="accent-emerald-"]::-moz-range-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+/* Target accent-green-500 class specifically (PlaybackControls) */
+[data-accent="blue"] input[type="range"].accent-green-500::-webkit-slider-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="blue"] input[type="range"].accent-green-500::-moz-range-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] input[type="range"].accent-green-500::-webkit-slider-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="purple"] input[type="range"].accent-green-500::-moz-range-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] input[type="range"].accent-green-500::-webkit-slider-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="pink"] input[type="range"].accent-green-500::-moz-range-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] input[type="range"].accent-green-500::-webkit-slider-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+[data-accent="orange"] input[type="range"].accent-green-500::-moz-range-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+/* Also override the accent-color property for green-500 */
+[data-accent="blue"] input[type="range"].accent-green-500 {
+  accent-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] input[type="range"].accent-green-500 {
+  accent-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] input[type="range"].accent-green-500 {
+  accent-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] input[type="range"].accent-green-500 {
+  accent-color: rgb(251, 146, 60) !important;
+}
+
+/* Target all accent-green-* classes */
+[data-accent="blue"] input[type="range"][class*="accent-green-"]::-webkit-slider-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="blue"] input[type="range"][class*="accent-green-"]::-moz-range-thumb {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="blue"] input[type="range"][class*="accent-green-"] {
+  accent-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] input[type="range"][class*="accent-green-"]::-webkit-slider-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="purple"] input[type="range"][class*="accent-green-"]::-moz-range-thumb {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="purple"] input[type="range"][class*="accent-green-"] {
+  accent-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] input[type="range"][class*="accent-green-"]::-webkit-slider-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="pink"] input[type="range"][class*="accent-green-"]::-moz-range-thumb {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="pink"] input[type="range"][class*="accent-green-"] {
+  accent-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] input[type="range"][class*="accent-green-"]::-webkit-slider-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+[data-accent="orange"] input[type="range"][class*="accent-green-"]::-moz-range-thumb {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+[data-accent="orange"] input[type="range"][class*="accent-green-"] {
+  accent-color: rgb(251, 146, 60) !important;
+}
+
+/* Also target the progress bar green color in PlaybackControls */
+[data-accent="blue"] .bg-green-500 {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] .bg-green-500 {
+  background-color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] .bg-green-500 {
+  background-color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] .bg-green-500 {
+  background-color: rgb(251, 146, 60) !important;
+}
+
+/* Target hover states in PlaybackControls - direct approach */
+[data-accent="blue"] .group:hover h3 {
+  color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] .group:hover h3 {
+  color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] .group:hover h3 {
+  color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] .group:hover h3 {
+  color: rgb(251, 146, 60) !important;
+}
+
+/* Target any element with text-green-* hover states */
+[data-accent="blue"] [class*="text-green-"]:hover {
+  color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] [class*="text-green-"]:hover {
+  color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] [class*="text-green-"]:hover {
+  color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] [class*="text-green-"]:hover {
+  color: rgb(251, 146, 60) !important;
+}
+
+/* Target the song info button specifically */
+[data-accent="blue"] button[class*="group"]:hover h3 {
+  color: rgb(59, 130, 246) !important;
+}
+
+[data-accent="purple"] button[class*="group"]:hover h3 {
+  color: rgb(147, 51, 234) !important;
+}
+
+[data-accent="pink"] button[class*="group"]:hover h3 {
+  color: rgb(236, 72, 153) !important;
+}
+
+[data-accent="orange"] button[class*="group"]:hover h3 {
+  color: rgb(251, 146, 60) !important;
+}
+
+/* Footer song bar hover states - gentle approach */
+.footer-song-bar:hover,
+.song-progress-footer:hover,
+.player-progress-bar:hover,
+.audio-progress:hover {
+  background: rgba(var(--accent-primary), 0.1) !important;
+}
+
+/* Footer controls hover states */
+.footer-controls button:hover,
+.player-controls button:hover,
+.audio-controls button:hover {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+/* Footer song bar hover states - more comprehensive */
+.footer-song-bar,
+.song-progress-footer,
+.player-progress-bar,
+.audio-progress,
+.footer,
+.player-footer,
+.audio-footer,
+.song-footer {
+  background: rgba(var(--accent-primary), 0.1) !important;
+}
+
+.footer-song-bar:hover,
+.song-progress-footer:hover,
+.player-progress-bar:hover,
+.audio-progress:hover,
+.footer:hover,
+.player-footer:hover,
+.audio-footer:hover,
+.song-footer:hover {
+  background: rgba(var(--accent-primary), 0.2) !important;
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+/* Footer controls hover states - more comprehensive */
+.footer-controls button:hover,
+.player-controls button:hover,
+.audio-controls button:hover,
+.footer button:hover,
+.player button:hover,
+.audio button:hover {
+  background: rgba(var(--accent-primary), 0.2) !important;
+  color: rgb(var(--accent-primary)) !important;
+}
+
+/* Progress bar fill for song progress */
+.progress-fill,
+.song-progress-fill,
+.audio-progress-fill {
+  background: rgb(var(--accent-primary)) !important;
+}
+
+/* Volume bar specific styling */
+.volume-slider input[type="range"]::-webkit-slider-track {
+  background: rgba(var(--accent-primary), 0.2) !important;
+}
+
+.volume-slider input[type="range"]::-moz-range-track {
+  background: rgba(var(--accent-primary), 0.2) !important;
+}
+
+/* Song progress bar specific styling */
+.progress-slider input[type="range"]::-webkit-slider-track {
+  background: rgba(var(--accent-primary), 0.3) !important;
+}
+
+.progress-slider input[type="range"]::-moz-range-track {
+  background: rgba(var(--accent-primary), 0.3) !important;
+}
+
+/* Footer song info hover */
+.footer-song-info:hover,
+.song-info-footer:hover,
+.player-song-info:hover {
+  background: rgba(var(--accent-primary), 0.1) !important;
+}
+
+/* Control buttons in footer */
+.play-pause-btn,
+.prev-btn,
+.next-btn,
+.volume-btn,
+.shuffle-btn,
+.repeat-btn {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+.play-pause-btn:hover,
+.prev-btn:hover,
+.next-btn:hover,
+.volume-btn:hover,
+.shuffle-btn:hover,
+.repeat-btn:hover {
+  background: rgba(var(--accent-primary), 0.2) !important;
+  color: rgb(var(--accent-hover)) !important;
+}
+
+/* Active control buttons */
+.play-pause-btn.active,
+.shuffle-btn.active,
+.repeat-btn.active {
+  background: rgb(var(--accent-primary)) !important;
+  color: white !important;
+}
+[data-accent="blue"] .bg-emerald-100,
+[data-accent="blue"] .bg-emerald-200,
+[data-accent="blue"] .bg-emerald-300,
+[data-accent="blue"] .bg-emerald-400,
+[data-accent="blue"] .bg-emerald-500,
+[data-accent="blue"] .bg-emerald-600,
+[data-accent="blue"] .bg-emerald-700,
+[data-accent="blue"] .bg-emerald-800,
+[data-accent="blue"] .bg-emerald-900 {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="blue"] .text-emerald-50,
+[data-accent="blue"] .text-emerald-100,
+[data-accent="blue"] .text-emerald-200,
+[data-accent="blue"] .text-emerald-300,
+[data-accent="blue"] .text-emerald-400,
+[data-accent="blue"] .text-emerald-500,
+[data-accent="blue"] .text-emerald-600,
+[data-accent="blue"] .text-emerald-700,
+[data-accent="blue"] .text-emerald-800,
+[data-accent="blue"] .text-emerald-900 {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="blue"] .border-emerald-50,
+[data-accent="blue"] .border-emerald-100,
+[data-accent="blue"] .border-emerald-200,
+[data-accent="blue"] .border-emerald-300,
+[data-accent="blue"] .border-emerald-400,
+[data-accent="blue"] .border-emerald-500,
+[data-accent="blue"] .border-emerald-600,
+[data-accent="blue"] .border-emerald-700,
+[data-accent="blue"] .border-emerald-800,
+[data-accent="blue"] .border-emerald-900 {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="purple"] .bg-emerald-50,
+[data-accent="purple"] .bg-emerald-100,
+[data-accent="purple"] .bg-emerald-200,
+[data-accent="purple"] .bg-emerald-300,
+[data-accent="purple"] .bg-emerald-400,
+[data-accent="purple"] .bg-emerald-500,
+[data-accent="purple"] .bg-emerald-600,
+[data-accent="purple"] .bg-emerald-700,
+[data-accent="purple"] .bg-emerald-800,
+[data-accent="purple"] .bg-emerald-900 {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="purple"] .text-emerald-50,
+[data-accent="purple"] .text-emerald-100,
+[data-accent="purple"] .text-emerald-200,
+[data-accent="purple"] .text-emerald-300,
+[data-accent="purple"] .text-emerald-400,
+[data-accent="purple"] .text-emerald-500,
+[data-accent="purple"] .text-emerald-600,
+[data-accent="purple"] .text-emerald-700,
+[data-accent="purple"] .text-emerald-800,
+[data-accent="purple"] .text-emerald-900 {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="purple"] .border-emerald-50,
+[data-accent="purple"] .border-emerald-100,
+[data-accent="purple"] .border-emerald-200,
+[data-accent="purple"] .border-emerald-300,
+[data-accent="purple"] .border-emerald-400,
+[data-accent="purple"] .border-emerald-500,
+[data-accent="purple"] .border-emerald-600,
+[data-accent="purple"] .border-emerald-700,
+[data-accent="purple"] .border-emerald-800,
+[data-accent="purple"] .border-emerald-900 {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="pink"] .bg-emerald-50,
+[data-accent="pink"] .bg-emerald-100,
+[data-accent="pink"] .bg-emerald-200,
+[data-accent="pink"] .bg-emerald-300,
+[data-accent="pink"] .bg-emerald-400,
+[data-accent="pink"] .bg-emerald-500,
+[data-accent="pink"] .bg-emerald-600,
+[data-accent="pink"] .bg-emerald-700,
+[data-accent="pink"] .bg-emerald-800,
+[data-accent="pink"] .bg-emerald-900 {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="pink"] .text-emerald-50,
+[data-accent="pink"] .text-emerald-100,
+[data-accent="pink"] .text-emerald-200,
+[data-accent="pink"] .text-emerald-300,
+[data-accent="pink"] .text-emerald-400,
+[data-accent="pink"] .text-emerald-500,
+[data-accent="pink"] .text-emerald-600,
+[data-accent="pink"] .text-emerald-700,
+[data-accent="pink"] .text-emerald-800,
+[data-accent="pink"] .text-emerald-900 {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="pink"] .border-emerald-50,
+[data-accent="pink"] .border-emerald-100,
+[data-accent="pink"] .border-emerald-200,
+[data-accent="pink"] .border-emerald-300,
+[data-accent="pink"] .border-emerald-400,
+[data-accent="pink"] .border-emerald-500,
+[data-accent="pink"] .border-emerald-600,
+[data-accent="pink"] .border-emerald-700,
+[data-accent="pink"] .border-emerald-800,
+[data-accent="pink"] .border-emerald-900 {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="orange"] .bg-emerald-50,
+[data-accent="orange"] .bg-emerald-100,
+[data-accent="orange"] .bg-emerald-200,
+[data-accent="orange"] .bg-emerald-300,
+[data-accent="orange"] .bg-emerald-400,
+[data-accent="orange"] .bg-emerald-500,
+[data-accent="orange"] .bg-emerald-600,
+[data-accent="orange"] .bg-emerald-700,
+[data-accent="orange"] .bg-emerald-800,
+[data-accent="orange"] .bg-emerald-900 {
+  background-color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="orange"] .text-emerald-50,
+[data-accent="orange"] .text-emerald-100,
+[data-accent="orange"] .text-emerald-200,
+[data-accent="orange"] .text-emerald-300,
+[data-accent="orange"] .text-emerald-400,
+[data-accent="orange"] .text-emerald-500,
+[data-accent="orange"] .text-emerald-600,
+[data-accent="orange"] .text-emerald-700,
+[data-accent="orange"] .text-emerald-800,
+[data-accent="orange"] .text-emerald-900 {
+  color: rgb(var(--accent-primary)) !important;
+}
+
+[data-accent="orange"] .border-emerald-50,
+[data-accent="orange"] .border-emerald-100,
+[data-accent="orange"] .border-emerald-200,
+[data-accent="orange"] .border-emerald-300,
+[data-accent="orange"] .border-emerald-400,
+[data-accent="orange"] .border-emerald-500,
+[data-accent="orange"] .border-emerald-600,
+[data-accent="orange"] .border-emerald-700,
+[data-accent="orange"] .border-emerald-800,
+[data-accent="orange"] .border-emerald-900 {
+  border-color: rgb(var(--accent-primary)) !important;
+}
+
+/* Hover states for accent colors */
+[data-accent="blue"] .hover\:bg-emerald-600:hover { background-color: rgb(var(--accent-hover)) !important; }
+[data-accent="blue"] .hover\:bg-emerald-700:hover { background-color: rgb(var(--accent-hover)) !important; }
+[data-accent="purple"] .hover\:bg-emerald-600:hover { background-color: rgb(var(--accent-hover)) !important; }
+[data-accent="purple"] .hover\:bg-emerald-700:hover { background-color: rgb(var(--accent-hover)) !important; }
+[data-accent="pink"] .hover\:bg-emerald-600:hover { background-color: rgb(var(--accent-hover)) !important; }
+[data-accent="pink"] .hover\:bg-emerald-700:hover { background-color: rgb(var(--accent-hover)) !important; }
+[data-accent="orange"] .hover\:bg-emerald-600:hover { background-color: rgb(var(--accent-hover)) !important; }
+[data-accent="orange"] .hover\:bg-emerald-700:hover { background-color: rgb(var(--accent-hover)) !important; }
+
+/* Focus states for accent colors */
+[data-accent="blue"] .focus\:ring-emerald-500:focus { --tw-ring-color: rgb(var(--accent-primary)) !important; }
+[data-accent="purple"] .focus\:ring-emerald-500:focus { --tw-ring-color: rgb(var(--accent-primary)) !important; }
+[data-accent="pink"] .focus\:ring-emerald-500:focus { --tw-ring-color: rgb(var(--accent-primary)) !important; }
+[data-accent="orange"] .focus\:ring-emerald-500:focus { --tw-ring-color: rgb(var(--accent-primary)) !important; }
+
+/* Theme-based background and text colors */
+.light .bg-zinc-900 { 
+  background-color: rgb(var(--bg-secondary)) !important; 
+}
+
+.light .bg-zinc-800 { 
+  background-color: rgb(var(--bg-tertiary)) !important; 
+}
+
+.light .text-white { 
+  color: rgb(var(--text-primary)) !important; 
+}
+
+.light .text-zinc-400 { 
+  color: rgb(var(--text-secondary)) !important; 
+}
+
+.light .border-zinc-800 { 
+  border-color: rgb(var(--border-primary)) !important; 
+}
+
+.light .border-zinc-700 { 
+  border-color: rgb(var(--border-secondary)) !important; 
+}

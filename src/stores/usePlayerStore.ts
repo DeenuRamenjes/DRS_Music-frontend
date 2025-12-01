@@ -8,6 +8,7 @@ interface PlayerStore {
 	isMuted: boolean;
 	queue: Song[];
 	currentIndex: number;
+	audioQuality: 'low' | 'normal' | 'high';
 
 	initializeQueue: (songs: Song[]) => void;
 	playAlbum: (songs: Song[], startIndex?: number) => void;
@@ -16,6 +17,8 @@ interface PlayerStore {
 	toggleMute: () => void;
 	playNext: () => void;
 	playPrevious: () => void;
+	setAudioQuality: (quality: 'low' | 'normal' | 'high') => void;
+	getAudioUrl: (song: Song) => string;
 }
 
 export const usePlayerStore = create<PlayerStore>((set, get) => ({
@@ -24,6 +27,7 @@ export const usePlayerStore = create<PlayerStore>((set, get) => ({
 	isMuted: false,
 	queue: [],
 	currentIndex: -1,
+	audioQuality: 'high',
 
 	initializeQueue: (songs: Song[]) => {
 		set({
@@ -163,6 +167,30 @@ export const usePlayerStore = create<PlayerStore>((set, get) => ({
 					activity: `Idle`,
 				});
 			}
+		}
+	},
+
+	setAudioQuality: (quality: 'low' | 'normal' | 'high') => {
+		set({ audioQuality: quality });
+	},
+
+	getAudioUrl: (song: Song) => {
+		const { audioQuality } = get();
+		
+		// Return different quality URLs based on the setting
+		if (typeof song.audioUrl === 'object' && song.audioUrl !== null) {
+			switch (audioQuality) {
+				case 'low':
+					return song.audioUrl.low || song.audioUrl.normal || song.audioUrl.high || '';
+				case 'normal':
+					return song.audioUrl.normal || song.audioUrl.high || song.audioUrl.low || '';
+				case 'high':
+				default:
+					return song.audioUrl.high || song.audioUrl.normal || song.audioUrl.low || '';
+			}
+		} else {
+			// Fallback to string audioUrl
+			return song.audioUrl as string;
 		}
 	},
 }));
